@@ -1,0 +1,109 @@
+#login-page{
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  height: 100vh;
+}
+
+.btnLogin{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all ease-in-out .4s;
+
+  &:hover{
+    opacity: 0.8;
+  }
+}
+
+#asideSignIn{
+  flex: 6;
+
+  background: #1e8581;
+  color: #FFF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 120px 80px;
+
+  > img{
+    align-self: center;
+    max-width: 320px;
+    width: 100%;
+  }
+
+  > strong{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+    margin-top: 16px;
+  }
+}
+
+#mainSignIn{
+  background-color: white;
+  flex: 8;
+  padding: 0px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentSignIn{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 350px;
+  align-items: stretch;
+  text-align: center;
+
+  .separator{
+    font-size: 14px ;
+    color: #a8a8b3;
+  
+    margin: 24px 0px;
+    display: flex;
+    align-items: center;
+  
+    &::before{
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #a8a8b3;
+      margin-right: 16px;
+    }
+  
+    &::after{
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #a8a8b3;
+      margin-left: 16px;
+    }
+  }
+
+  .btnUnity{
+    height: 50px;
+    border-radius: 8px;
+    background: #1071e5;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 0;
+    transition: all ease-in-out .4s;
+
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+  
+}

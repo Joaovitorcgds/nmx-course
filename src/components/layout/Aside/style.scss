@@ -1,0 +1,107 @@
+#aside{
+  position: fixed;
+  top: 70px;
+  left: 0;
+  height: 100vh;
+  max-width: 300px;
+  width: 100%;
+  background-color: #1071e5;
+  padding: 20px 10px;
+}
+
+.containerNav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  
+  .userInfo{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    > img{
+      border-radius: 5px 5px;
+      width: 30px;
+    }
+
+    > span{
+      font-weight: 500;
+      color: white;
+    }
+  }
+
+}
+
+.btnToggle{
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: 0 2px 3px white;
+  }
+}
+
+.btnAddRoom{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  width: 80%;
+  padding: 5px 10px;
+  margin: 20px auto 0px;
+
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out .4s;
+  background-color: white;
+  color: #1071e5;
+  font-weight: 500;
+
+  &:hover{
+    // opacity: .8;
+    background-color: #cacaca;
+  }
+}
+
+.separator{
+  font-size: 14px ;
+  color: white;
+
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+
+  &::before{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-right: 16px;
+  }
+
+  &::after{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-left: 16px;
+  }
+}
+
+.monthFilter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .styleBtn{
+    cursor: pointer;
+    margin: 5px;
+    
+    :hover{
+      background-color: #cacaca;
+      
+    }
+  }
+}
