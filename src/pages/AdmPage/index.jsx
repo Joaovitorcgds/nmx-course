@@ -6,7 +6,6 @@ import "./style.scss";
 
 export default function AdmRoom(){
   const [showModal, setShowModal] = useState(false);
-
   return(
     <>
     <Header/>
