@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import "./styles/global.scss"
 
 import { AuthContextProvider} from './context/AuthProvider'
-import { Routes } from './routes'
+import { Routes } from './Routes'
 
 import { DatabaseContextProvider } from './context/DatabaseProvider'
 
