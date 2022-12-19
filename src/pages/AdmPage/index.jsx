@@ -38,7 +38,6 @@ export default function AdmRoom(){
     setMonth(currentMonth)
     setYear(currentYear)
     handleGetName()
-    getCourses(months[currentMonth], currentYear)
   }
 
   function handleNextMonth(){
@@ -67,7 +66,7 @@ export default function AdmRoom(){
 
   useEffect(() => {
     getCourses(months[month], year)
-  },[month])
+  },[month, year])
 
   return(
     <>
