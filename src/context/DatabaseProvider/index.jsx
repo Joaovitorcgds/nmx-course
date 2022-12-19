@@ -5,7 +5,7 @@ import { getUserLocalStorage } from "../AuthProvider/util";
 export const DatabaseContext = createContext({})
 
 export function DatabaseContextProvider({children}){
-  const { user } = getUserLocalStorage();
+  const user  = getUserLocalStorage();
   const [ units, setUnits ] = useState();
   const [ courseList, setCourseList ] = useState([])
 
@@ -14,7 +14,7 @@ export function DatabaseContextProvider({children}){
       const { data, error } = await supabase
       .from('units')
       .select('id')
-      .eq('id_user', user.id)
+      .eq('id_user', user.user.id)
 
       const idUnits = data[0].id;
       setUnits(idUnits)
