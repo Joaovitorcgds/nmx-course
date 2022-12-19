@@ -11,7 +11,7 @@ import { supabase } from "../../service/supabase";
 export default function AdmRoom(){
   const [showModal, setShowModal] = useState(false);
   const [nameUser, setNameUser] = useState("")
-  const [month, setMonth] = useState();
+  const [month, setMonth] = useState(0);
   const [year, setYear] = useState(0);
 
   const {user}  = getUserLocalStorage();
@@ -57,6 +57,8 @@ export default function AdmRoom(){
       setMonth(11)
       setYear((currentYear) => currentYear - 1)
     }
+
+    
   }
 
   useEffect(() => {
