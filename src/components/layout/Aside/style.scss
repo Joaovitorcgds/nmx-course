@@ -1,0 +1,75 @@
+#aside{
+  position: fixed;
+  top: 70px;
+  left: 0;
+  height: 100vh;
+  max-width: 300px;
+  width: 100%;
+  background-color: #1071e5;
+  padding: 20px 10px;
+}
+
+.btnAddRoom{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  width: 80%;
+  padding: 5px 10px;
+  margin: 20px auto 0px;
+
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out .4s;
+  background-color: white;
+  color: #1071e5;
+  font-weight: 500;
+
+  &:hover{
+    background-color: #cacaca;
+  }
+}
+
+.separator{
+  font-size: 14px ;
+  color: white;
+
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+
+  &::before{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-right: 16px;
+  }
+
+  &::after{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-left: 16px;
+  }
+}
+
+.monthFilter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0px;
+  color: white;
+  font-weight: 600;
+
+  .styleBtn{
+    cursor: pointer;
+    transition: all ease-in-out .4s;
+
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+}

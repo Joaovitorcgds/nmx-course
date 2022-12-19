@@ -1,0 +1,17 @@
+.card{
+  width: 100%;
+  background-color: white;
+  color: black;
+  
+  margin-bottom: 8px;
+  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all ease-in-out .4s;
+
+  
+  &:hover{
+    background-color: #cacaca;
+  }
+  
+}
