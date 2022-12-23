@@ -3,10 +3,11 @@ import { X } from "phosphor-react"
 import { useForm } from "react-hook-form"
 import { supabase } from "../../service/supabase";
 import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
+import { getUserLocalStorage } from "../../context/AuthProvider/util";
 
 export function ModalNewRoom({setShowModal, month, year}){
   const {register, handleSubmit} = useForm();
-  const { getCourses, units } = useDatabase();
+  const { handleGetCourses } = useDatabase();
 
   const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ,22 , 23, 24, 25, 26, 27, 28, 29, 30, 31];
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
@@ -16,23 +17,38 @@ export function ModalNewRoom({setShowModal, month, year}){
   }
 
   async function handleSendCourse(e){
-    const { error } = await supabase
-    .from('courses')
-    .insert({  
-      name: e.name,
-      organizer: e.organizer,
-      price: e.price,
-      day: parseInt(e.day),
-      month: e.month,
-      year: parseInt(e.year),
-      schedule: parseInt(e.schedule),
-      id_units: units})
+    const dataUser  = getUserLocalStorage();
+    
+    const {data, error} = await supabase
+    .from('units')
+    .select("id")
+    .eq("id_user", dataUser.user.id)
 
     if(error){
       throw error
     }
-    getCourses(months[month], year)
-    handleCloseModal()
+
+    const id_unit = data[0].id
+
+    if(id_unit){
+      const { error } = await supabase
+      .from('courses')
+      .insert({  
+        name: e.name,
+        organizer: e.organizer,
+        price: e.price,
+        day: parseInt(e.day),
+        month: e.month,
+        year: parseInt(e.year),
+        schedule: parseInt(e.schedule),
+        id_units: id_unit})
+  
+      if(error){
+        throw error
+      }
+      handleGetCourses(months[month], year)
+      handleCloseModal()
+    }
   }
   
   return(
