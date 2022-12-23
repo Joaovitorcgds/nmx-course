@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "./style.scss"
 import { UserCircle } from "phosphor-react"
@@ -7,6 +7,12 @@ import illustration from "../../assets/ilustracao.png"
 
 export default function Home(){
   const navigate = useNavigate();
+
+  function handleNavigate(e){
+    const element = e.target
+    const idAttribute = element.getAttribute("id");
+    navigate(`${idAttribute}/courses`)
+  }
 
   return(
     <div id='login-page'>
@@ -23,8 +29,8 @@ export default function Home(){
           <img src={logo} alt="Logo Nova Mix" />
           <div className="separator">Selecione a unidade de sua preferência</div>
 
-          <button className='btnUnity'>Unidade Campinho</button>
-          <button className='btnUnity'>Unidade Friburgo</button>
+          <button id="1" className='btnUnity' onClick={handleNavigate}>Unidade Campinho</button>
+          <button id="2" className='btnUnity' onClick={handleNavigate}>Unidade Teresópolis</button>
         </div>
       </main>
     </div>

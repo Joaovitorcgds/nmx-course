@@ -9,6 +9,7 @@ import AdmPage from '../pages/AdmPage'
 import ErrorPage from '../Error-page'
 
 import { ProtectedLayout } from '../pages/ProtectedLayout'
+import { Courses } from "../pages/Courses"
 
 export function Routes (){
   const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export function Routes (){
       <ProtectedLayout> 
         <AdmPage/> 
       </ProtectedLayout>,
+    },
+    {
+      path: `/:idParams/courses`,
+      element: <Courses/>
     }
   ]);
 
