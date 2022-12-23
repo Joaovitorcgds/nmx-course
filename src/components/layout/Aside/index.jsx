@@ -1,20 +1,41 @@
 import "./style.scss"
 import { CaretRight, CaretLeft } from "phosphor-react"
 import { ListCourses } from "../../listOfCards/ListCourses"
+import { getUserLocalStorage } from "../../../context/AuthProvider/util"
 
 export function Aside({ setShowModal, 
-  month, year,
-  handleNextMonth, handlePrevMonth}){
-  
+month, year,
+setMonth, setYear}){
 
-    const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
-    function openModal(){
-      setShowModal(true)
+  const user = getUserLocalStorage();
+  const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+  function openModal(){
+    setShowModal(true)
+  }
+
+  function handleNextMonth(){
+    setMonth((currentMonth) => currentMonth + 1)
+    
+    if(month === 11){
+      setMonth(0)
+      setYear((currentYear) => currentYear + 1)
     }
+  }
+
+  function handlePrevMonth(){
+    setMonth((currentMonth) => currentMonth - 1)
+    
+    if(month === 0){
+      setMonth(11)
+      setYear((currentYear) => currentYear - 1)
+    }
+
+    
+  }
   
   return (
     <nav id="aside">
-      <button className="btnAddRoom" onClick={openModal}> Adicionar curso</button>
+      {user ? <button className="btnAddRoom" onClick={openModal}> Adicionar curso</button> : <span></span>}
       <div className="separator">Próximos cursos</div>
       <div className="monthFilter">
         <CaretLeft color="white" weight="fill" size={24}

@@ -1,11 +1,13 @@
 import "./style.scss"
 import logoNmx from "../../../assets/logo.png"
 import { UserCircle } from "phosphor-react"
+import { useDatabase } from "../../../context/DatabaseProvider/useDatabase"
 
 
 
-export function Header({nameUser}){
-
+export function Header(){
+  const { nameUser } = useDatabase();
+  
   return(
     <header id="headerGlobal">
       <img src={logoNmx} alt="logo Novamix Cursos" />
