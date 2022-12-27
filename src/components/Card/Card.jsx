@@ -1,8 +1,15 @@
 import "./style.scss"
-export function Card({className, children}){
+import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
+export function Card({id, children}){
+  const { getCurrentCourse } = useDatabase()
   
   return (
-    <div className={ className ? `${className} card` : "card"}>
+    <div  id={id} className="card" onClick= {(e) => {
+      const element = e.target
+      const id = element.getAttribute("id")
+
+      getCurrentCourse(Number(id))
+    }}>
       {children}
     </div>
   )

@@ -34,7 +34,7 @@ setMonth, setYear}){
   }
   
   return (
-    <nav id="aside">
+    <div id="aside">
       {user ? <button className="btnAddRoom" onClick={openModal}> Adicionar curso</button> : <span></span>}
       <div className="separator">Próximos cursos</div>
       <div className="monthFilter">
@@ -44,6 +44,6 @@ setMonth, setYear}){
         <CaretRight color="white" weight="fill" size={24} className="styleBtn" onClick={handleNextMonth}></CaretRight>
       </div>
       <ListCourses/>
-    </nav>
+    </div>
   )
 }
