@@ -1,11 +1,10 @@
 #aside{
-  position: fixed;
-  top: 70px;
+  position: relative;
   left: 0;
-  height: 100vh;
+  height: calc(100vh - 70px);
   max-width: 300px;
   width: 100%;
-  background-color: #1071e5;
+  background-color: #1e8581;
   padding: 20px 10px;
 }
 
@@ -23,7 +22,7 @@
   cursor: pointer;
   transition: all ease-in-out .4s;
   background-color: white;
-  color: #1071e5;
+  color: #1e8581;
   font-weight: 500;
 
   &:hover{
