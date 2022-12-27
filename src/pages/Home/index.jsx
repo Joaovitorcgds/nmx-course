@@ -1,18 +1,25 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
 
 import "./style.scss"
 import { UserCircle } from "phosphor-react"
 import logo from "../../assets/logo.png"
 import illustration from "../../assets/ilustracao.png"
+import { useEffect } from "react";
 
 export default function Home(){
   const navigate = useNavigate();
+  const { setCurrentCourse } = useDatabase()
 
   function handleNavigate(e){
     const element = e.target
     const idAttribute = element.getAttribute("id");
     navigate(`${idAttribute}/courses`)
   }
+
+  useEffect(() => {
+    setCurrentCourse()
+  },[])
 
   return(
     <div id='login-page'>

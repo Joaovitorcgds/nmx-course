@@ -11,7 +11,7 @@ export default function AdmRoom(){
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
 
-  const { handleGetCourses, handleGetName} = useDatabase();
+  const { handleGetFilteredCourseList, handleGetName} = useDatabase();
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function AdmRoom(){
 
   useEffect(() => {
     if(month !== undefined){
-      handleGetCourses(months[month], year)
+      handleGetFilteredCourseList(months[month], year)
     }
   },[month])
 

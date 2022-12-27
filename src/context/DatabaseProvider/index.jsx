@@ -7,8 +7,9 @@ export const DatabaseContext = createContext({})
 export function DatabaseContextProvider({children}){
   const [ nameUser, setNameUser ] = useState()
   const [ courseList, setCourseList ] = useState([])
+  const [ currentCourse, setCurrentCourse ] = useState()
 
-  async function handleGetCourses(month, year){
+  async function handleGetFilteredCourseList(month, year){
     const dataUser  = getUserLocalStorage();
 
     const {data, error} = await supabase
@@ -56,7 +57,7 @@ export function DatabaseContextProvider({children}){
     }
   }
 
-  async function getCourses(idParams, month, year){
+  async function getFilteredCourseList(idParams, month, year){
     const {data, error} = await supabase
     .from('courses')
     .select('*')
@@ -70,28 +71,41 @@ export function DatabaseContextProvider({children}){
 
     console.log(data);
     return setCourseList(data)
-}
-
-async function getName(idParams){
-  const {data, error} = await supabase
-  .from('units')
-  .select('name')
-  .eq('id', idParams)
-
-  if(error){
-    throw error;
   }
 
-  console.log(data);
-  return setNameUser(data[0].name)
-}
+  async function getName(idParams){
+    const {data, error} = await supabase
+    .from('units')
+    .select('name')
+    .eq('id', idParams)
 
+    if(error){
+      throw error;
+    }
+
+    console.log(data);
+    return setNameUser(data[0].name)
+  }
+
+  async function getCurrentCourse(id){
+    const { data, error } = await supabase
+    .from("courses")
+    .select("*")
+    .eq("id", id)
+
+    if(error){
+      throw error
+    }
+
+    setCurrentCourse(data[0])
+  }
 
   return (
     <DatabaseContext.Provider value= {{ 
-    handleGetCourses, handleGetName, 
-    getCourses, getName, 
-    courseList, nameUser }}>
+    handleGetFilteredCourseList, handleGetName, 
+    getFilteredCourseList, getName,
+    getCurrentCourse, setCurrentCourse,
+    currentCourse, courseList, nameUser }}>
       {children}
     </DatabaseContext.Provider>
   )

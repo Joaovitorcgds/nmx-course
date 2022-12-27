@@ -9,7 +9,7 @@ export function ListCourses(){
       <ul>
         {courseList.map((course, i) =>  {
           return(
-            <Card key={i}>{course.name} no dia {course.day}</Card>
+            <Card key={i} id={course.id} >{course.name} no dia {course.day}</Card>
           )
         })} 
       </ul>
