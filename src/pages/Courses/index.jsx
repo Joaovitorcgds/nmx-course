@@ -38,10 +38,13 @@ export function Courses() {
         setMonth={setMonth} setYear={setYear}/>
         <div id="containerCourses">
         {currentCourse 
-        ? <div>
+        ? <div id="courseInformation">
             <h1>Curso de {currentCourse.name}</h1>
-            <p>com professor(a) {currentCourse.organizer} no dia {currentCourse.day} de {currentCourse.month} às  {currentCourse.schedule} horas</p>
-              <p>O investimento para participar da aula é de {currentCourse.price} reais.</p>
+            <ul>
+              <li>com Culinarista <strong>{currentCourse.organizer}</strong></li>
+              <li>No dia <strong>{currentCourse.day}</strong> de <strong>{currentCourse.month}</strong> às  <strong>{currentCourse.schedule} horas</strong> </li>
+              <li>O investimento para participar da aula é de <strong>{currentCourse.price} reais</strong> .</li>
+            </ul>
           </div> 
         : <h1>Escolha um curso dos próximos dias para ver mais informação</h1>}
           
@@ -51,7 +54,7 @@ export function Courses() {
               <div>
                 <h3>Loja Campinho</h3>
                 <span>
-                  <WhatsappLogo size={24} weight="thin" />
+                  <WhatsappLogo id="imgContact" size={24} weight="thin" />
                   (21) 99678-3559
                 </span>
                 <p>Avenida Ernani Cardoso 350 <br />
@@ -62,7 +65,7 @@ export function Courses() {
               <div>
                 <h3>Loja Prado</h3>
                 <span>
-                  <Phone size={24} weight="thin" />
+                  <Phone id="imgContact" size={24} weight="thin" />
                   (22) 2580-2029
                 </span>
                 <p>Av. Gov. Roberto Silveira, 1700 <br />

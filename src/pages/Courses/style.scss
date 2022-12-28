@@ -14,10 +14,48 @@ main{
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  
 
   >h1{
     text-align: center;
+    height: calc(100vh - 220px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 25px;
   }
+}
+
+#courseInformation{
+  height: calc(100vh - 220px);
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+
+  > h1{
+    margin-top: 25px;
+    text-align: center; 
+    font-size: 40px;
+    color: #ec8423;
+    border-bottom: 3px solid #1e8581;
+  }
+
+  ul{
+    width: 100%;
+    padding-left: 60px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 35px;
+
+   > li{
+    font-size: 24px;
+   }
+  }
+
 }
 
 #footer{
@@ -26,8 +64,7 @@ main{
   justify-content: center;
   background-color: #f1f3f4;
   width: 100%;
-  // position: fixed;
-  // bottom: 0;
+  height: 150px;
 
   >h2{
     text-align: center;
@@ -54,3 +91,106 @@ main{
     }
   }
 }
+
+// MUDAR ESTRUTURA DE RESPONSIVIDADE
+
+// @media (max-width: 990px){
+//   #footer > h2 {
+//     font-size: 16px;
+//   }
+
+//   #containerCourses > h1{
+//     font-size: 24px;
+
+//   }
+// }
+
+// @media (max-width: 768px){
+//   #footer > h2 {
+//     font-size: 14px;
+//   }
+
+//   #containerContact > div{
+//     > h3{
+//       font-size: 12px;
+//     }
+
+//     > span, p{
+//       font-size: 10px;
+//     }
+//   }
+// }
+
+// @media (max-width: 320px){
+//   #containerCourses{
+//     >h1{
+//       padding: 10px;
+//       font-size: 18px;
+//       height: calc(100vh - 290px)
+//     }
+//   }
+  
+//   #courseInformation{
+//     gap: 20px;
+//     padding: 10px;
+//     height: calc(100vh - 290px);
+
+//     > h1{
+//       font-size: 18px;
+//       margin-top: 0px;
+//     }
+  
+//     ul{
+//       width: 100%;
+//       padding-left: 10px;
+//       display: flex;
+//       justify-content: flex-start;
+//       flex-direction: column;
+//       gap: 15px;
+  
+//      > li{
+//       font-size: 12px;
+//      }
+//     }
+  
+//   }
+  
+//   #footer{
+//     height: 220px;
+    
+//     #containerContact{
+//     flex-direction: column;
+//     gap: 8px;
+//     margin: 16px 0px 0px 0px;
+
+//     div{
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+      
+//       h3{
+//         font-size: 12px;
+//       }
+      
+//       span{
+//         #imgContact{
+//           width: 20px;
+//         }
+//         font-size: 8px;
+//       }
+      
+//       p{
+//         text-align: center;
+//         font-size: 8px;
+//       }
+//     }
+//   }
+    
+//     h2 {
+//       font-size: 8px;
+//     }
+//   }
+
+  
+// }
