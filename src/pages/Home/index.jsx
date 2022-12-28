@@ -34,6 +34,9 @@ export default function Home(){
       <main id="mainSignIn">
         <div className='contentSignIn'>
           <img src={logo} alt="Logo Nova Mix" />
+
+          {screen.width < "791" ? <p>Veja o cronograma dos cursos aqui.</p> : <span></span>}
+          
           <div className="separator">Selecione a unidade de sua preferência</div>
 
           <button id="1" className='btnUnity' onClick={handleNavigate}>Unidade Campinho</button>
