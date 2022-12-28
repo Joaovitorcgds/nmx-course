@@ -7,7 +7,7 @@ import { getUserLocalStorage } from "../../context/AuthProvider/util";
 
 export function ModalNewRoom({setShowModal, month, year}){
   const {register, handleSubmit} = useForm();
-  const { handleGetCourses } = useDatabase();
+  const { handleGetFilteredCourseList } = useDatabase();
 
   const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ,22 , 23, 24, 25, 26, 27, 28, 29, 30, 31];
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
@@ -46,7 +46,7 @@ export function ModalNewRoom({setShowModal, month, year}){
       if(error){
         throw error
       }
-      handleGetCourses(months[month], year)
+      handleGetFilteredCourseList(months[month], year)
       handleCloseModal()
     }
   }
