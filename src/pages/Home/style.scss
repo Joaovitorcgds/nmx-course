@@ -111,3 +111,35 @@ main{
   }
   
 }
+
+@media (max-width: 790px){
+  #asideSignIn{
+    display: none;
+  }
+
+  .contentSignIn{
+    > img{
+      align-self: center;
+      width: 300px;
+    }
+
+    .separator{
+      margin: 0px 0px 12px 0px;
+    }
+  }
+}
+
+@media (max-width: 420px){
+  .contentSignIn{
+    > p{
+      font-size: 22px;
+      font-weight: 500;
+      padding: 0px 25px;
+    }
+
+    .separator{
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}

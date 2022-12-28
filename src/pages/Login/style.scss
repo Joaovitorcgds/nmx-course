@@ -134,6 +134,30 @@
         }
       }
     }
-  
+}
 
+@media (max-width: 790px){
+  #asideSignIn{
+    display: none;
+  }
+
+  .contentSignIn{
+    > img{
+      align-self: center;
+      width: 300px;
+    }
+
+    .separator{
+      margin: 0px 0px 12px 0px;
+    }
+  }
+}
+
+@media (max-width: 380px){
+  .contentSignIn{
+    .separator{
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
 }
