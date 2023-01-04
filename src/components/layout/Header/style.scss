@@ -7,8 +7,11 @@
   justify-content: space-between;
   align-items: center;
 
-  > img{
-    max-height: 40px;
+  a{
+    text-decoration: none;
+    img{
+      max-height: 40px;
+    }
   }
 
   .userInfo{
@@ -16,5 +19,19 @@
     align-items: center;
     justify-content: center;
     font-weight: 600;
+  }
+}
+
+@media (max-width: 320px){
+  #headerGlobal{
+    > img{
+      height: 30px;
+    }
+  }
+  .userInfo{
+    font-size: 10px;
+    #userCircle{
+      width: 24px;
+    }
   }
 }

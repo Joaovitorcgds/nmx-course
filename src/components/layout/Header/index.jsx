@@ -10,9 +10,11 @@ export function Header(){
   
   return(
     <header id="headerGlobal">
-      <img src={logoNmx} alt="logo Novamix Cursos" />
+      <a href="/">
+        <img src={logoNmx} alt="logo Novamix Cursos" />
+      </a>
       <div className="userInfo">
-        <UserCircle size={32} weight="fill" />
+        <UserCircle id="userCircle" size={32} weight="fill" />
         <span>{nameUser}</span>
       </div>
     </header>

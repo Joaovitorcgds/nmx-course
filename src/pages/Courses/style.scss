@@ -105,92 +105,31 @@ main{
 //   }
 // }
 
-// @media (max-width: 768px){
-//   #footer > h2 {
-//     font-size: 14px;
-//   }
+@media (max-width: 768px){
+  #courseInformation{
+    height: calc(100vh - 370px);
+  }
 
-//   #containerContact > div{
-//     > h3{
-//       font-size: 12px;
-//     }
-
-//     > span, p{
-//       font-size: 10px;
-//     }
-//   }
-// }
-
-// @media (max-width: 320px){
-//   #containerCourses{
-//     >h1{
-//       padding: 10px;
-//       font-size: 18px;
-//       height: calc(100vh - 290px)
-//     }
-//   }
-  
-//   #courseInformation{
-//     gap: 20px;
-//     padding: 10px;
-//     height: calc(100vh - 290px);
-
-//     > h1{
-//       font-size: 18px;
-//       margin-top: 0px;
-//     }
-  
-//     ul{
-//       width: 100%;
-//       padding-left: 10px;
-//       display: flex;
-//       justify-content: flex-start;
-//       flex-direction: column;
-//       gap: 15px;
-  
-//      > li{
-//       font-size: 12px;
-//      }
-//     }
-  
-//   }
-  
-//   #footer{
-//     height: 220px;
-    
-//     #containerContact{
-//     flex-direction: column;
-//     gap: 8px;
-//     margin: 16px 0px 0px 0px;
-
-//     div{
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: center;
-//       align-items: center;
-      
-//       h3{
-//         font-size: 12px;
-//       }
-      
-//       span{
-//         #imgContact{
-//           width: 20px;
-//         }
-//         font-size: 8px;
-//       }
-      
-//       p{
-//         text-align: center;
-//         font-size: 8px;
-//       }
-//     }
-//   }
-    
-//     h2 {
-//       font-size: 8px;
-//     }
-//   }
+  #containerCourses > h1 {
+    height: calc(100vh - 370px);
+  }
 
   
-// }
+  #footer{
+    height: 300px;
+
+    > h2{
+      font-size: 16px;
+    }
+    #containerContact{
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      > div > span{
+        justify-content: center;
+      }
+    }
+  }
+
+}

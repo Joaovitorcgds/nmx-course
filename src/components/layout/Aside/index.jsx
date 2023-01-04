@@ -38,10 +38,10 @@ setMonth, setYear}){
       {user ? <button className="btnAddRoom" onClick={openModal}> Adicionar curso</button> : <span></span>}
       <div className="separator">Próximos cursos</div>
       <div className="monthFilter">
-        <CaretLeft color="white" weight="fill" size={24}
+        <CaretLeft color="white" weight="fill" id="btnMonth" size={24}
          className="styleBtn" onClick={handlePrevMonth}></CaretLeft>
         {`${months[month]}/${year}`}
-        <CaretRight color="white" weight="fill" size={24} className="styleBtn" onClick={handleNextMonth}></CaretRight>
+        <CaretRight color="white" weight="fill" id="btnMonth" size={24} className="styleBtn" onClick={handleNextMonth}></CaretRight>
       </div>
       <ListCourses/>
     </div>
