@@ -1,6 +1,7 @@
 import "./style.scss"
 import { useState, useEffect } from "react";
 import { useDatabase } from "../../context/DatabaseProvider/useDatabase";
+import { getUserLocalStorage } from "../../context/AuthProvider/util"
 
 import { Aside } from "../../components/layout/Aside";
 import { Header } from "../../components/layout/Header";
@@ -10,6 +11,7 @@ import { WhatsappLogo, Phone } from "phosphor-react";
 export function Courses() {
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
+  const user = getUserLocalStorage()
 
   const { getFilteredCourseList, getName, currentCourse} = useDatabase();
   const { idParams } = useParams()
@@ -17,6 +19,10 @@ export function Courses() {
   
 
   useEffect(() => {
+    if(user){
+      localStorage.clear()
+    }
+
     const currentMonth = new Date().getMonth();
     const currentYear = new Date().getFullYear();
     setMonth(currentMonth)
