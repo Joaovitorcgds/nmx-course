@@ -104,9 +104,7 @@ export function ModalNewRoom({setShowModal, month, year}){
               <div>
                 <label htmlFor="year">Ano</label>
                 <select name="year" {...register("year")} className="select">
-                  <option value="2022">2022</option>
-                  <option value="2023">2023</option>
-                  <option value="2024">2024</option>
+                  <option value={year}>{year}</option>
                 </select>
               </div>
             </div>
