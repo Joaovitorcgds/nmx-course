@@ -6,6 +6,27 @@
   width: 100%;
   background-color: #1e8581;
   padding: 20px 10px;
+  overflow-x: hidden;
+}
+
+
+#aside::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#aside::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+#aside::-webkit-scrollbar-thumb {
+  background: #005b58; 
+}
+
+/* Handle on hover */
+#aside::-webkit-scrollbar-thumb:hover {
+  background: #002625;
 }
 
 .btnAddRoom{
