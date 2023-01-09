@@ -8,6 +8,9 @@
   align-items: center;
 
   a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     img{
       max-height: 40px;
@@ -73,6 +76,22 @@
   }
 }
 
+@media (max-width: 390px){
+  #headerGlobal{
+    a > img{
+      height: 35px;
+    }
+  }
+
+  .userInfo{
+    font-size: 13px;
+    #userCircle{
+      width: 28px;
+    }
+  }
+
+}
+
 @media (max-width: 320px){
   #headerGlobal{
     > img{
@@ -80,7 +99,7 @@
     }
   }
   .userInfo{
-    font-size: 10px;
+    font-size: 12px;
     #userCircle{
       width: 24px;
     }
