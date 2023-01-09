@@ -6,6 +6,7 @@ export const DatabaseContext = createContext({})
 
 export function DatabaseContextProvider({children}){
   const [ nameUser, setNameUser ] = useState()
+  const [ telephoneUnit, setTelephoneUnit ] = useState()
   const [ courseList, setCourseList ] = useState([])
   const [ currentCourse, setCurrentCourse ] = useState()
 
@@ -76,7 +77,7 @@ export function DatabaseContextProvider({children}){
   async function getName(idParams){
     const {data, error} = await supabase
     .from('units')
-    .select('name')
+    .select(`name, telephone`)
     .eq('id', idParams)
 
     if(error){
@@ -84,7 +85,8 @@ export function DatabaseContextProvider({children}){
     }
 
     console.log(data);
-    return setNameUser(data[0].name)
+    setNameUser(data[0].name)
+    setTelephoneUnit(data[0].telephone)
   }
 
   async function getCurrentCourse(id){
@@ -105,7 +107,7 @@ export function DatabaseContextProvider({children}){
     handleGetFilteredCourseList, handleGetName, 
     getFilteredCourseList, getName,
     getCurrentCourse, setCurrentCourse,
-    currentCourse, courseList, nameUser }}>
+    currentCourse, courseList, nameUser, telephoneUnit}}>
       {children}
     </DatabaseContext.Provider>
   )
