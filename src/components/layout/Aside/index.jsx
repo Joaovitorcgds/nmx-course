@@ -56,7 +56,7 @@ setMonth, setYear}){
       </div>
 
       <button className={!toggleAside ? "btnCloseAside btnToggleAside" : "btnToggleAside"} onClick={() => {setToggleAside(!toggleAside)}}>
-        <CaretDoubleLeft size={32} weight="bold" />
+        <CaretDoubleLeft className="iconBtn" size={32} weight="bold" />
       </button> 
 
       <ListCourses toggleAside={toggleAside} setToggleAside={setToggleAside}/>
