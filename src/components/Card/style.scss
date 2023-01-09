@@ -16,6 +16,14 @@
   
 }
 
+.CardCloseAside{
+  display: none;
+
+  &:hover{
+    background-color: #1e8581;
+  }
+}
+
 @media (max-width: 768px){
   .card {
     font-size: 14px;
