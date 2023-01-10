@@ -12,6 +12,7 @@ export function ListCourses({toggleAside, setToggleAside}){
       setToggleAside(!toggleAside)
     }
     getCurrentCourse(Number(id))
+
   }
 
   if (courseList) { 

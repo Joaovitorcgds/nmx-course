@@ -1,6 +1,6 @@
 import "./style.scss"
 import { CaretRight, CaretLeft, CaretDoubleLeft } from "phosphor-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ListCourses } from "../../listOfCards/ListCourses"
 import { getUserLocalStorage } from "../../../context/AuthProvider/util"
 
@@ -13,6 +13,18 @@ setMonth, setYear}){
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
   function openModal(){
     setShowModal(true)
+  }
+
+  function disableBtn(){
+    const element = document.getElementById("btnPrevMonth")
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
+    if(currentMonth === month && currentYear === year){
+      element.setAttribute("disabled",true);
+    }else{
+      element.removeAttribute("disabled")
+    }
   }
 
   function handleNextMonth(){
@@ -31,9 +43,13 @@ setMonth, setYear}){
       setMonth(11)
       setYear((currentYear) => currentYear - 1)
     }
-
-    
   }
+
+  useEffect(() => {
+    if(month != null){
+      disableBtn()
+    }
+  }, [month])
   
   return (
     <div id="aside" className={!toggleAside ? "closeAside aside" : "aside"}>
@@ -49,10 +65,16 @@ setMonth, setYear}){
         Próximos cursos
       </div>
       <div className={!toggleAside ? "closeContentAside monthFilter" : "monthFilter"}>
-        <CaretLeft color="white" weight="fill" id="btnMonth" size={24}
-        className="styleBtn" onClick={handlePrevMonth}/>
+
+        <button id="btnPrevMonth" onClick={handlePrevMonth}>
+          <CaretLeft color="white" weight="fill" id="btnMonth" size={24}
+          className="styleBtn" />
+        </button>
+
           {`${months[month]}/${year}`}
-        <CaretRight color="white" weight="fill" id="btnMonth" size={24} className="styleBtn" onClick={handleNextMonth}/>
+        <button onClick={handleNextMonth}>
+          <CaretRight color="white" weight="fill" id="btnMonth" size={24} className="styleBtn" />
+        </button>
       </div>
 
       <button className={!toggleAside ? "btnCloseAside btnToggleAside" : "btnToggleAside"} onClick={() => {setToggleAside(!toggleAside)}}>
