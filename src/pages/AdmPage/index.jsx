@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Header } from "../../components/layout/Header";
 import { Aside } from "../../components/layout/Aside";
-import { ModalNewRoom } from "../../components/Modal";
+import { ModalNewCourse } from "../../components/ModalNewCourse";
+import { MainAdm } from "../../components/layout/MainAdm";
 import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
 
 import "./style.scss";
@@ -11,7 +12,7 @@ export default function AdmRoom(){
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
 
-  const { handleGetFilteredCourseList, handleGetName} = useDatabase();
+  const { handleGetFilteredCourseList, handleGetName, currentCourse} = useDatabase();
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
   useEffect(() => {
@@ -31,15 +32,16 @@ export default function AdmRoom(){
   return(
     <>
     <Header />
-    <Aside setShowModal={setShowModal} 
-    month={month} year={year}
-    setMonth={setMonth} setYear={setYear}
-    />
-    {showModal ? 
-      <ModalNewRoom 
-      setShowModal={setShowModal} 
-      month={month} year={year}/> 
-    : <span></span>}
+    <main>
+      <Aside setShowModal={setShowModal}
+      month={month} year={year}
+      setMonth={setMonth} setYear={setYear}
+      />
+      <ModalNewCourse setShowModal={setShowModal} showModal={showModal}
+      month={month} year={year}/>
+      <MainAdm/>
+    </main>
+
     </>
   )
 }

@@ -1,4 +1,4 @@
-#containerModal{
+.containerModal{
   position: fixed;
   top: 0;
   left: 0;
@@ -10,12 +10,21 @@
   width: 100%;
   height: 100vh;
   background-color: rgba($color: #000000, $alpha: .5);
+  opacity: 0;
+  pointer-events: none;
+  transition: all .25s ease-in-out;
+}
+
+.showModal{
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .contentModal{
   position: relative;
-  width: 500px;
-  height: 520px;
+  width: 480px;
+  height: 540px;
+  border-radius: 8px;
   background-color: white;
 
   padding: 20px 10px;

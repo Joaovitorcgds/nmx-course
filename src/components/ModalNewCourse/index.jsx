@@ -5,7 +5,7 @@ import { supabase } from "../../service/supabase";
 import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
 import { getUserLocalStorage } from "../../context/AuthProvider/util";
 
-export function ModalNewRoom({setShowModal, month, year}){
+export function ModalNewCourse({setShowModal, showModal, month, year}){
   const {register, handleSubmit} = useForm();
   const { handleGetFilteredCourseList } = useDatabase();
 
@@ -52,12 +52,12 @@ export function ModalNewRoom({setShowModal, month, year}){
   }
   
   return(
-    <div id="containerModal">
+    <div className={showModal ? "showModal containerModal" : "containerModal"}>
       <div className="contentModal">
         <X  className="closeModal" size={20} 
             onClick={handleCloseModal}/>
 
-        <h2>Crie um novo Evento</h2>
+        <h2>Adicione um novo curso</h2>
 
         <div id="form">
 

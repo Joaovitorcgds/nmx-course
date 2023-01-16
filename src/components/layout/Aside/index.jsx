@@ -46,7 +46,7 @@ setMonth, setYear}){
   }
 
   useEffect(() => {
-    if(month != null){
+    if(month !== undefined){
       disableBtn()
     }
   }, [month])
@@ -57,26 +57,23 @@ setMonth, setYear}){
       <button className="btnAddRoom" onClick={openModal}> Adicionar curso</button> 
       : <span></span>}
 
-      <h2 className={!toggleAside ? "closeContentAside" : "infoAside"}>
+      <h2 className="infoAside">
         Escolha um curso dos próximos dias para ver mais informação
       </h2> 
 
-      <div className={!toggleAside ? "closeContentAside separator" : "separator"}>
+      <div className="separator">
         Próximos cursos
       </div>
-      <div className={!toggleAside ? "closeContentAside monthFilter" : "monthFilter"}>
-
+      <div className="monthFilter">
         <button id="btnPrevMonth" onClick={handlePrevMonth}>
           <CaretLeft color="white" weight="fill" id="btnMonth" size={24}
           className="styleBtn" />
         </button>
-
           {`${months[month]}/${year}`}
         <button onClick={handleNextMonth}>
           <CaretRight color="white" weight="fill" id="btnMonth" size={24} className="styleBtn" />
         </button>
       </div>
-
       <button className={!toggleAside ? "btnCloseAside btnToggleAside" : "btnToggleAside"} onClick={() => {setToggleAside(!toggleAside)}}>
         <CaretDoubleLeft className="iconBtn" size={32} weight="bold" />
       </button> 
