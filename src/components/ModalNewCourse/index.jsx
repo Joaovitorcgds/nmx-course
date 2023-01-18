@@ -18,6 +18,7 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
 
   async function handleSendCourse(e){
     const dataUser  = getUserLocalStorage();
+    const allInputs = document.querySelectorAll(".inputModal")
     
     const {data, error} = await supabase
     .from('units')
@@ -39,7 +40,7 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
         price: e.price,
         day: parseInt(e.day),
         month: e.month,
-        year: parseInt(e.year),
+        year: year,
         schedule: parseInt(e.schedule),
         id_units: id_unit})
   
@@ -48,6 +49,9 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
       }
       handleGetFilteredCourseList(months[month], year)
       handleCloseModal()
+      allInputs.forEach((input) => {
+        input.value = ""
+      })
     }
   }
   
@@ -64,24 +68,28 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
           <form id="formNewEvent" onSubmit={handleSubmit(handleSendCourse)}>
             <div className="textField">
               <label htmlFor="name">Nome do Curso</label>
-              <input type="text" {...register("name")} autoComplete="off" required/>
+              <input type="text" {...register("name")} autoComplete="off" required className="inputModal"/>
             </div>
         
             <div className="textField">
-              <label htmlFor="organizer">Organizador</label>
-              <input type="text" {...register("organizer")} autoComplete="off" required/>
+              <label htmlFor="organizer">Culinárista</label>
+              <input type="text"  className="inputModal"
+              name="organizer" {...register("organizer")} 
+              autoComplete="off" required/>
             </div>
 
             <div className="textField">
               <label htmlFor="price">Investimento</label>
-              <input type="number" {...register("price")}
-              className="inputNumber"autoComplete="off" placeholder="R$ 4,99" required/>
+              <input type="number" className="inputNumber inputModal"
+              name="price" {...register("price")}
+              autoComplete="off" required/>
             </div>
 
             <div className="textField">
               <label htmlFor="schedule">Horário</label>
               <input type="number" {...register("schedule")} 
-              className="inputNumber"autoComplete="off" min={0} max="21" required/>
+              className="inputNumber inputModal"
+              autoComplete="off" min={0} max="21" required/>
             </div>
 
             <div className="dataPai">
@@ -101,12 +109,12 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
                   })}
                 </select>
               </div>
-              <div>
+              {/* <div>
                 <label htmlFor="year">Ano</label>
                 <select name="year" {...register("year")} className="select">
                   <option value={year}>{year}</option>
                 </select>
-              </div>
+              </div> */}
             </div>
             <button type="submit" className="btnModal">Criar curso</button>
           </form>
