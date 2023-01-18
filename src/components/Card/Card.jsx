@@ -1,9 +1,9 @@
 import "./style.scss"
 
-export function Card({id, className, onclick, children}){
+export function Card({id, onclick, children, selected}){
   
   return (
-    <div id={id} className={className} onClick= {onclick}>
+    <div id={id} className={`card ${selected ? "selectedCard" : ""}`} onClick= {onclick}>
       {children}
     </div>
   )

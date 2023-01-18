@@ -1,4 +1,9 @@
 .card{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
   width: 100%;
   background-color: white;
   color: black;
@@ -7,8 +12,7 @@
   padding: 6px;
   border-radius: 5px;
   cursor: pointer;
-  transition: all ease-in-out .4s;
-
+  transition: all ease-in-out .3s;
   
   &:hover{
     background-color: #cacaca;
@@ -16,12 +20,8 @@
   
 }
 
-.CardCloseAside{
-  display: none;
-
-  &:hover{
-    background-color: #1e8581;
-  }
+.selectedCard{
+  background-color: #cacaca;
 }
 
 @media (max-width: 768px){
