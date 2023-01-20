@@ -5,23 +5,42 @@
   cursor: pointer;
   position: absolute;
   right: -5px;
-  z-index: 2;
 }
 
 .modalCard{
-  width: 222px;
-  height: 218px;
-  position: absolute;
-  right: -220px;
   top: 0;
-  border: 1px solid black;
-  display: none;
+  right: -220px;
+  width: 222px;
+  height: 185px;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  opacity: 0;
   pointer-events: none;
-  transition: all .5s ease-in-out;
-  z-index: 10;
+  transition: all .3s ease-in-out;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 0;
+  box-shadow: 0 0 10px 0 #00000070;
 }
 
 .showOptionCard{
-  display: flex;
+  opacity: 1;
   pointer-events: auto;
+}
+
+.btnModal{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 15px 15px;
+  transition: all .3s ease-in-out;
+
+  &:hover{
+    background-color: #f0f2f5;
+  }
 }

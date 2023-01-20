@@ -102,11 +102,36 @@ export function DatabaseContextProvider({children}){
     setCurrentCourse(data[0])
   }
 
+  async function cancelCourse(id){
+    const { error } = await supabase
+    .from('courses')
+    .update({ is_cancelled: true })
+    .eq('id', id)
+
+    if(error){
+      throw new Error()
+    }
+  }
+
+  async function deleteCourses(id){
+    const { error } = await supabase
+    .from('courses')
+    .delete()
+    .eq('id', id)
+
+    if(error){
+      throw error
+    }
+    
+    const newArray = courseList.filter(course => course.id !== id)
+    setCourseList(newArray)
+  }
+
   return (
-    <DatabaseContext.Provider value= {{ 
+    <DatabaseContext.Provider value= {{ deleteCourses, cancelCourse, 
     handleGetFilteredCourseList, handleGetName, 
     getFilteredCourseList, getName,
-    getCurrentCourse, setCurrentCourse,
+    getCurrentCourse, setCurrentCourse, setCourseList,
     currentCourse, courseList, nameUser, telephoneUnit}}>
       {children}
     </DatabaseContext.Provider>
