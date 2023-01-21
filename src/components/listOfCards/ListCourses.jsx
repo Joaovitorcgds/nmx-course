@@ -52,22 +52,27 @@ export function ListCourses({toggleAside, setToggleAside}){
     <ul>
     {courseList.map((course, i) =>  {
       return(
-        <Card key={i} id={course.id} 
-        onclick={handleGetCourseId}
-        canceled={course.is_cancelled}
-        selected={course.id === idSelectedCard}>
-          <span id={course.id}>{course.name} no dia {course.day}</span>
+        <Card key={i} id={course.id} onclick={handleGetCourseId}
+        canceled={course.is_cancelled} selected={course.id === idSelectedCard}>
+
+          {course.is_cancelled ?
+            <span id={course.id}>O curso no dia {course.day} foi cancelado</span>
+          :
+            <span id={course.id}>{course.name} no dia {course.day}</span>
+          }
+
           {user ? 
             <button className="optionCard" onClick={(e)=> toggleOptionCard(e)}>
               <DotsThreeVertical size={32} weight="thin" id={course.id}/>
             </button> 
           : ""}
+
           {course.id === parseInt(actualOpen) ? 
             <div className={`modalCard ${showOptionCard ? "showOptionCard" : ""}`}>
-            <button className="btnModal">Editar informação</button>
-            <button className="btnModal" onClick={handleCancelCourse}>Cancelar curso</button>
-            <button className="btnModal" style={{"color": "red"}}
-            onClick={handleDeleteCourse}>Excluir curso</button>
+              <button className="btnModal">Editar informação</button>
+              <button className={`btnModal ${course.is_cancelled ? "disableBtn" : ""}`} onClick={handleCancelCourse}>Cancelar curso</button>
+              <button className="btnModal" style={{"color": "red"}}
+              onClick={handleDeleteCourse}>Excluir curso</button>
             </div> 
           : ""}
         </Card>
