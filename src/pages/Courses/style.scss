@@ -10,9 +10,10 @@ main{
 #containerCourses{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
+  height: calc(100vh - 100px);
 }
 
 .initialTitle{
@@ -87,7 +88,6 @@ main{
   justify-content: center;
   align-items: center;
   gap: 15px;
-  height: calc(100vh - 70px);
   padding: 20px;
 
   >p{
