@@ -1,0 +1,27 @@
+.containerListStudents{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+.listStudents{
+  list-style: none;
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  width: 700px;
+  flex-wrap: wrap;
+  gap:  25px 100px;
+  
+}
+
+.student{
+  display: flex;
+  width: 60px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

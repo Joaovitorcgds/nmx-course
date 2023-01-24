@@ -1,7 +1,15 @@
 #mainAdm{
+  display: flex;
   position: relative;
-  padding: 20px;
   width: 100%;
+  // padding: 20px;
+}
+
+.contentMain{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .caseCancelledCourse{

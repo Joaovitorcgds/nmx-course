@@ -1,0 +1,14 @@
+.asideStudent{
+  position: absolute;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: calc(100vh - 70px);
+  background-color: aqua;
+  z-index: 4;
+  transition: all .5s ease-in-out;
+}
+
+.showAsideStudent{
+  right: 0;
+}
