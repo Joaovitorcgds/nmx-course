@@ -12,7 +12,16 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
   const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ,22 , 23, 24, 25, 26, 27, 28, 29, 30, 31];
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
   
-  function handleCloseModal(){
+  function handleCloseModal(e){
+    const closeModal = document.querySelector(".closeModal")
+    const modal = document.querySelector(".contentModal")
+    
+    if(e.target === closeModal){
+      setShowModal(false)
+    }
+    
+    if(modal.contains(e.target)) return
+
     setShowModal(false)
   }
 
@@ -56,7 +65,8 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
   }
   
   return(
-    <div className={showModal ? "showModal containerModal" : "containerModal"}>
+    <div className={showModal ? "showModal containerModal" : "containerModal"}
+    onClick={handleCloseModal}>
       <div className="contentModal">
         <X  className="closeModal" size={20} 
             onClick={handleCloseModal}/>
@@ -109,12 +119,6 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
                   })}
                 </select>
               </div>
-              {/* <div>
-                <label htmlFor="year">Ano</label>
-                <select name="year" {...register("year")} className="select">
-                  <option value={year}>{year}</option>
-                </select>
-              </div> */}
             </div>
             <button type="submit" className="btnModal">Criar curso</button>
           </form>
