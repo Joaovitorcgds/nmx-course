@@ -1,10 +1,10 @@
 import "./style.scss"
 import { CaretRight, CaretLeft, CaretDoubleLeft } from "phosphor-react"
 import { useState, useEffect } from "react"
-import { ListCourses } from "../../listOfCards/ListCourses"
+import { ListCourses } from "../../ListCourses"
 import { getUserLocalStorage } from "../../../context/AuthProvider/util"
 
-export function Aside({ setShowModal, 
+export function Aside({ setShowModal,
 month, year,
 setMonth, setYear}){
 

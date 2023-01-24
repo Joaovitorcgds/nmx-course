@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
 import { getUserLocalStorage } from "../../context/AuthProvider/util"
 import { Card } from "../Card/Card"
@@ -6,7 +6,6 @@ import "./style.scss"
 import { DotsThreeVertical } from "phosphor-react"
 
 export function ListCourses({toggleAside, setToggleAside}){
-  const [ actualOpen, setActualOpen ] = useState(0)
   const [ showOptionCard, setShowOptionCard ] = useState(false)
   const [ idSelectedCard, setIdSelectedCard ] = useState()
   const { courseList, getCurrentCourse, deleteCourses, cancelCourse, setCourseList } = useDatabase()
@@ -24,16 +23,20 @@ export function ListCourses({toggleAside, setToggleAside}){
   }
   
   function toggleOptionCard(e){
+    const main = document.getElementById("mainAdm")
     handleGetCourseId(e)
-    setActualOpen(e.target.id)
+
+    if(e.target === main){
+      console.log(true)
+    }
     
     setShowOptionCard(!showOptionCard)
   }
 
   async function handleCancelCourse(){
-    cancelCourse(parseInt(actualOpen))
+    cancelCourse(idSelectedCard)
     const newState = courseList.map((course) => {
-      if(course.id === parseInt(actualOpen)){
+      if(course.id === idSelectedCard){
         return {...course, is_cancelled: true}
       }
       return course;
@@ -41,11 +44,9 @@ export function ListCourses({toggleAside, setToggleAside}){
     setCourseList(newState)
     setShowOptionCard(false)
   }
-  
 
   function handleDeleteCourse(){
-    deleteCourses(parseInt(actualOpen))
-    
+    deleteCourses(idSelectedCard)
   }
   
   return(
@@ -62,17 +63,17 @@ export function ListCourses({toggleAside, setToggleAside}){
           }
 
           {user ? 
-            <button className="optionCard" onClick={(e)=> toggleOptionCard(e)}>
+            <button className="optionCard" onClick={toggleOptionCard}>
               <DotsThreeVertical size={32} weight="thin" id={course.id}/>
             </button> 
           : ""}
 
-          {course.id === parseInt(actualOpen) ? 
-            <div className={`modalCard ${showOptionCard ? "showOptionCard" : ""}`}>
-              <button className="btnModal">Editar informação</button>
-              <button className={`btnModal ${course.is_cancelled ? "disableBtn" : ""}`} onClick={handleCancelCourse}>Cancelar curso</button>
-              <button className="btnModal" style={{"color": "red"}}
-              onClick={handleDeleteCourse}>Excluir curso</button>
+          {course.id === idSelectedCard ? 
+            <div id={course.id} className={`modalCard ${showOptionCard ? "showOptionCard" : ""}`}>
+              <p className="btnModal">Editar informação</p>
+              <p className={`btnModal ${course.is_cancelled ? "disableBtn" : ""}`} onClick={handleCancelCourse}>Cancelar curso</p>
+              <p className="btnModal" style={{"color": "red"}}
+              onClick={handleDeleteCourse}>Excluir curso</p>
             </div> 
           : ""}
         </Card>
