@@ -2,14 +2,15 @@
   display: flex;
   position: relative;
   width: 100%;
-  // padding: 20px;
 }
 
 .contentMain{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   padding: 20px;
+  max-width: calc(100vw - 40px);
+  width: 100%;
 }
 
 .caseCancelledCourse{

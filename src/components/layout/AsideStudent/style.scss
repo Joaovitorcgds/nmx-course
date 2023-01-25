@@ -1,14 +1,72 @@
 .asideStudent{
   position: absolute;
-  top: 0;
-  right: -300px;
-  width: 300px;
+  right: 0px;
+  width: 350px;
   height: calc(100vh - 70px);
-  background-color: aqua;
+  background-color: white;
   z-index: 4;
   transition: all .5s ease-in-out;
+  padding: 10px 15px;
+  border-left: 1px solid #ec8423;
+  border-top: 1px solid #ec8423;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  >h2{
+    text-align: center;
+    margin-bottom: 10px;
+  }
 }
 
-.showAsideStudent{
-  right: 0;
+.closeAsideStudent{
+  right: -350px;
+  box-shadow: none;
+}
+
+.separatorInAsideStudents{
+  font-size: 14px ;
+  color: #a8a8b3;
+
+  margin: 14px 0px ;
+  display: flex;
+  align-items: center;
+
+  &::before{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-right: 16px;
+  }
+
+  &::after{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #a8a8b3;
+    margin-left: 16px;
+  }
+}
+
+#formAsideStudent{
+  display: flex;
+  flex-direction: column;
+
+  .textFieldStudents{
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin-bottom: 15px;
+
+    > input{
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px 15px;
+    
+      &:focus{
+        border: 2px solid #1071e5;
+        outline-offset: 0px;
+        outline: none;
+      }
+    }
+  }
 }

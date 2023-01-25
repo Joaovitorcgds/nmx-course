@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { useDatabase } from "../../../context/DatabaseProvider/useDatabase";
 import { ListStudents } from "../../ListStudents"
 import { AsideStudent } from "../AsideStudent";
 import { Warning } from "phosphor-react";
 import "./style.scss"
-import { useState } from "react";
 
 export function MainAdm(){
   const [showAsideStudent, setShowAsideStudent] = useState(false);
