@@ -1,19 +1,13 @@
-.containerListStudents{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  margin-top: 30px;
-}
-
 .listStudents{
   list-style: none;
-  display: flex;
-  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   flex-direction: row;
-  width: 700px;
   flex-wrap: wrap;
-  gap:  25px 100px;
+  max-width: 900px;
+  width: 100%;
+  gap:  25px 50px;
+  
   
 }
 

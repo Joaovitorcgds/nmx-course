@@ -32,7 +32,7 @@ export default function AdmRoom(){
   return(
     <>
     <Header />
-    <main>
+    <main style={{"overflowX": "hidden"}}>
       <Aside setShowModal={setShowModal}
       month={month} year={year}
       setMonth={setMonth} setYear={setYear}

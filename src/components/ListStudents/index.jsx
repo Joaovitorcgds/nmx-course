@@ -7,10 +7,14 @@ export function ListStudents({setShowAsideStudent}){
   const size = 25;
   const newArray = []
 
-  for (let i = 0; i < size; i = i + 1){
+  for (let i = 1; i <= size; i = i + 1){
     newArray.push({
       id: i,
-      name: "vazio"
+      name: "vazio",
+      telephone: null,
+      payment_voucher: null,
+      is_paid: false,
+      is_present: false
     })
   }
   // setStudents(newArray)
@@ -19,20 +23,17 @@ export function ListStudents({setShowAsideStudent}){
   }
 
   return(
-    
-    <div className="containerListStudents">
-      <ul className="listStudents">
-        {
-          newArray.map((student, i) =>{
-            return(
-              <li key={i} className="student" onClick={handleOpenAsideStudent}>
-                <UserSquare className="iconStudent" size={40} weight="thin" />
-                {student.name}
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
+    <ul className="listStudents">
+      {
+        newArray.map((student, i) =>{
+          return(
+            <li key={i} id={student.id} className="student" onClick={handleOpenAsideStudent}>
+              <UserSquare className="iconStudent" size={40} weight="thin" />
+              {student.name}
+            </li>
+          );
+        })
+      }
+    </ul>
   )
 }
