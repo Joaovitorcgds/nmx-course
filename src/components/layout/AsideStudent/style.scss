@@ -69,4 +69,20 @@
       }
     }
   }
+
+  .booleanStudents{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .containerBtn{
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  
 }

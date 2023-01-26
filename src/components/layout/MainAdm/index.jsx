@@ -7,14 +7,20 @@ import "./style.scss"
 
 export function MainAdm(){
   const [showAsideStudent, setShowAsideStudent] = useState(false);
+  const [ idChair, setIdChair ] = useState();
   const {currentCourse} = useDatabase();
 
   function handleCloseAsideStudent(e){
     const element= e.target;
     const asideStudent= document.querySelector(".asideStudent")
+    const allInputs = document.querySelectorAll(".inputAside")
 
     if(asideStudent.contains(element)) return
 
+    allInputs.forEach((input) => {
+      input.value = ""
+    })
+    
     setShowAsideStudent(false)
   }
 
@@ -29,9 +35,12 @@ export function MainAdm(){
                   <h1>{currentCourse.name}</h1>
                   <span>Com o culinarista {currentCourse.organizer} no dia {currentCourse.day} de {currentCourse.month}</span>
                 </div>
-                <ListStudents setShowAsideStudent={setShowAsideStudent}/>
+                <ListStudents setShowAsideStudent={setShowAsideStudent} setIdChair={setIdChair}/>
               </div>
-              <AsideStudent showAsideStudent={showAsideStudent}/>
+              <AsideStudent 
+                showAsideStudent={showAsideStudent} setShowAsideStudent={setShowAsideStudent} 
+                idChair={idChair}
+              />
             </>
           :
             <div className="caseCancelledCourse">

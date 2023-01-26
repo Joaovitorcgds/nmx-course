@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.6",
     "@supabase/supabase-js": "^2.2.0",
     "localforage": "^1.10.0",
     "phosphor-react": "^1.4.1",
