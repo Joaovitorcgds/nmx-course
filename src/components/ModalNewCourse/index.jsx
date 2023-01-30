@@ -13,15 +13,14 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
   
   function handleCloseModal(e){
-    const closeModal = document.querySelector(".closeModal")
     const modal = document.querySelector(".contentModal")
-    
-    if(e.target === closeModal){
-      setShowModal(false)
-    }
-    
+    const allInputs = document.querySelectorAll(".inputModal")
+
     if(modal.contains(e.target)) return
 
+    allInputs.forEach((input) => {
+      input.value = ""
+    })
     setShowModal(false)
   }
 
@@ -57,7 +56,7 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
         throw error
       }
       handleGetFilteredCourseList(months[month], year)
-      handleCloseModal()
+      setShowModal(false)
       allInputs.forEach((input) => {
         input.value = ""
       })
@@ -65,11 +64,11 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
   }
   
   return(
-    <div className={showModal ? "showModal containerModal" : "containerModal"}
-    onClick={handleCloseModal}>
+    <>
+    <div className={showModal ? "showModal containerModal" : "containerModal"} onClick={handleCloseModal}>
       <div className="contentModal">
         <X  className="closeModal" size={20} 
-            onClick={handleCloseModal}/>
+            onClick={() => setShowModal(false)}/>
 
         <h2>Adicione um novo curso</h2>
 
@@ -125,5 +124,7 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
         </div>
       </div>
     </div>
+    {/* <div style={{position: "fixed", inset: 0, background: "transparent", zIndex: 8, display: showModal ? "block" : "none"}} onClick={handleCloseModal} ></div> */}
+    </>
   )
 }
