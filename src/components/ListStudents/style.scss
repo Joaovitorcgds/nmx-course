@@ -2,13 +2,10 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  flex-direction: row;
-  flex-wrap: wrap;
   max-width: 900px;
   width: 100%;
   gap:  25px 50px;
-  
-  
+  align-items: baseline;
 }
 
 .student{
@@ -18,4 +15,13 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  text-align: center;
+}
+
+.isPaid{
+  color: #ec8423;
+}
+
+.isPresent{
+  color: #1bd741;
 }

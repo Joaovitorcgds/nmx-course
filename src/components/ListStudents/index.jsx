@@ -1,11 +1,12 @@
 import { UserSquare } from "phosphor-react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
 import "./style.scss"
 
 export function ListStudents({setShowAsideStudent, setIdChair}){
-  const [students, setStudents] = useState([]);
-  const size = 25;
+  const { getStudentsDB, listStudentsDB, currentCourse, getCurrentStudent } = useDatabase();
   const newArray = []
+  const size = 25;
 
   for (let i = 1; i <= size; i = i + 1){
     newArray.push({
@@ -17,23 +18,36 @@ export function ListStudents({setShowAsideStudent, setIdChair}){
       is_present: false
     })
   }
-  // setStudents(newArray)
-  function handleOpenAsideStudent(e){
-    const element = e.target;
+
+  useEffect(() =>{
+    getStudentsDB(currentCourse.id, newArray)
+
+  }, [])
+
+  useEffect(() => {
+    getStudentsDB(currentCourse.id, newArray)
+  }, [currentCourse])
+
+  async function handleOpenAsideStudent(e){
+    const element = e.target.parentNode;
     const id = element.getAttribute("id");
-    setIdChair(id)
     
+    if(id === null) return
+    
+    setIdChair(id)
+    await getCurrentStudent(id, currentCourse.id)
     setShowAsideStudent(true)
   }
 
   return(
     <ul className="listStudents">
       {
-        newArray.map((student, i) =>{
+          listStudentsDB.map((student) =>{
           return(
-            <li key={i} id={student.id} className="student" onClick={handleOpenAsideStudent}>
-              <UserSquare id={student.id} className="iconStudent" size={40} weight="thin" />
-              {student.name}
+            <li key={student.id} id={student.id} className="student" onClick={handleOpenAsideStudent}>
+              <UserSquare id={student.id} weight={student.name !== "vazio" ? "fill" :  "thin"} size={40}
+              className={`"iconStudent" ${student.is_paid ? "isPaid" : ""} ${student.is_present ? "isPresent" : ""}`}/>
+              <span>{student.name}</span>
             </li>
           );
         })
