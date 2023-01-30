@@ -8,7 +8,7 @@ import { getUserLocalStorage } from "../../../context/AuthProvider/util";
 
 
 export function Header(){
-  const { nameUser } = useDatabase();
+  const { nameUser, isLoading } = useDatabase();
   const [ sidebarLogout, setSidebarLogout] = useState(false);
   const navigate = useNavigate();
   const user = getUserLocalStorage();
@@ -31,7 +31,7 @@ export function Header(){
       </a>   
       <div className="userInfo" onClick={showSidebarLogout}>
         <UserCircle id="userCircle" size={32} weight="fill" />
-        <span>{nameUser}</span>
+        {isLoading ? <span>Carregando...</span> : <span>{nameUser}</span>}
       </div>
       <div className={`sidebarLogout ${sidebarLogout ? "showSidebarLogout" : ""}`} >
         <button onClick={signOut} className="btnLogout">
