@@ -7,6 +7,7 @@ import Home from "../pages/Home"
 import Login from "../pages/Login"
 import AdmPage from '../pages/AdmPage'
 import ErrorPage from '../Error-page'
+import RedirectUnity from "../pages/RedirectUnity"
 
 import { ProtectedLayout } from '../pages/ProtectedLayout'
 import { Courses } from "../pages/Courses"
@@ -24,7 +25,15 @@ export function Routes (){
   
     },
     {
-      path: "/admpage",
+      path: "/redirectUnit",
+      element: 
+      <ProtectedLayout>
+        <RedirectUnity/>
+      </ProtectedLayout>
+
+    },
+    {
+      path: "/:idParamsUnity/adm/course",
       element: 
       <ProtectedLayout> 
         <AdmPage/> 

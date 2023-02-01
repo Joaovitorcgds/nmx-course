@@ -25,13 +25,13 @@ export default function Login(){
       setIsError(true)
       throw error
     }
-    navigate("/admpage")
+    navigate("/redirectUnit")
   }
 
   useEffect(() => {
     const user = getUserLocalStorage();
     if(user){
-      navigate("/admpage")
+      navigate("/redirectUnit")
     }
   }, [])
 
