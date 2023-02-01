@@ -1,6 +1,6 @@
 import "./style.scss"
 import logoNmx from "../../../assets/logo.png"
-import { UserCircle, SignOut } from "phosphor-react"
+import { UserCircle } from "phosphor-react"
 import { useDatabase } from "../../../context/DatabaseProvider/useDatabase"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { getUserLocalStorage } from "../../../context/AuthProvider/util";
 
 
 export function Header(){
-  const { nameUser, isLoading } = useDatabase();
+  const { nameUser, isLoading, setCurrentCourse } = useDatabase();
   const [ sidebarLogout, setSidebarLogout] = useState(false);
   const navigate = useNavigate();
   const user = getUserLocalStorage();
@@ -17,6 +17,11 @@ export function Header(){
     if(user){
       setSidebarLogout(!sidebarLogout)
     }
+  }
+
+  function handleChangeUnit(){
+    setCurrentCourse(null)
+    navigate("/redirectUnit")
   }
   
   function signOut(){
@@ -33,12 +38,13 @@ export function Header(){
         <UserCircle id="userCircle" size={32} weight="fill" />
         {isLoading ? <span>Carregando...</span> : <span>{nameUser}</span>}
       </div>
-      <div className={`sidebarLogout ${sidebarLogout ? "showSidebarLogout" : ""}`} >
-        <button onClick={signOut} className="btnLogout">
-          <span>Sair</span>
-          <SignOut size={32} weight="bold" />
-        </button>
-      </div>
+      <>
+        <div className={`sidebarLogout ${sidebarLogout ? "showSidebarLogout" : ""}`} >
+          <p className="btnSidebarLogout" onClick={handleChangeUnit}>Trocar de unidade</p>
+          <p className="btnSidebarLogout" style={{"color": "red"}} onClick={signOut}>Sair</p>
+        </div>
+        <div style={{position: "fixed", inset: 0, background: "transparent", zIndex: 4, display: sidebarLogout ? "block" : "none"}} onClick={() => {setSidebarLogout(false)}} ></div>
+      </>
       
     </header>
     )
