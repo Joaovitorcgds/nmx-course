@@ -25,54 +25,20 @@ export function DatabaseContextProvider({children}){
   }
   const [ currentStudent, setCurrentStudent ] = useState(initializeCurrentStudent)
 
-  async function handleGetFilteredCourseList(month, year){
-    const dataUser  = getUserLocalStorage();
 
-    const {data, error} = await supabase
-    .from('units')
-    .select('id')
-    .eq('id_user', dataUser.user.id)
-
-    if(error){
-      throw error;
-    }
-
-    const id_unit = data[0].id
-
-    if(id_unit){
+  async function handleGetName(idParamsUnity){
       const {data, error} = await supabase
-      .from('courses')
-      .select('*')
-      .eq('id_units', id_unit)
-      .eq('month', month)
-      .eq("year", year)
-
-      if(error){
-        throw error;
-      }
-
-      console.log(data);
-      return setCourseList(data)
-    }
-
-  }
-
-  async function handleGetName(){
-    const dataUser  = getUserLocalStorage();
-
-    if(dataUser){
-      const {data, error} = await supabase
-      .from('users')
+      .from('units')
       .select('name')
-      .eq('id', dataUser.user.id)
+      .eq('id', idParamsUnity)
 
       if(error){
         throw error
       }
       setIsLoading(false)
       return setNameUser(data[0].name)
-    }
   }
+  
 
   async function getFilteredCourseList(idParams, month, year){
     const {data, error} = await supabase
@@ -104,7 +70,7 @@ export function DatabaseContextProvider({children}){
     console.log(data);
     setNameUser(data[0].name);
     setTelephoneUnit(data[0].telephone);
-    setIsLoading(!isLoading);
+    setIsLoading(false);
   }
 
   async function getStudentsDB(id_courses, newArray){
@@ -196,7 +162,7 @@ export function DatabaseContextProvider({children}){
 
   return (
     <DatabaseContext.Provider value= {{
-    handleGetFilteredCourseList, getFilteredCourseList,
+    getFilteredCourseList,
     deleteCourses, cancelCourse, 
     getCurrentCourse, setCurrentCourse, currentCourse,
     getStudentsDB, setListStudentsDB, listStudentsDB,

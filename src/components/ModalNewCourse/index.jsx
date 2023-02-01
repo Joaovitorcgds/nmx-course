@@ -3,11 +3,12 @@ import { X } from "phosphor-react"
 import { useForm } from "react-hook-form"
 import { supabase } from "../../service/supabase";
 import { useDatabase } from "../../context/DatabaseProvider/useDatabase"
-import { getUserLocalStorage } from "../../context/AuthProvider/util";
+import { useParams } from "react-router-dom";
 
 export function ModalNewCourse({setShowModal, showModal, month, year}){
   const {register, handleSubmit} = useForm();
-  const { handleGetFilteredCourseList } = useDatabase();
+  const { getFilteredCourseList } = useDatabase();
+  const { idParamsUnity } = useParams()
 
   const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ,22 , 23, 24, 25, 26, 27, 28, 29, 30, 31];
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
@@ -25,42 +26,28 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
   }
 
   async function handleSendCourse(e){
-    const dataUser  = getUserLocalStorage();
     const allInputs = document.querySelectorAll(".inputModal")
     
-    const {data, error} = await supabase
-    .from('units')
-    .select("id")
-    .eq("id_user", dataUser.user.id)
+    const { error } = await supabase
+    .from('courses')
+    .insert({  
+      name: e.name,
+      organizer: e.organizer,
+      price: e.price,
+      day: parseInt(e.day),
+      month: e.month,
+      year: year,
+      schedule: parseInt(e.schedule),
+      id_units: idParamsUnity})
 
     if(error){
       throw error
     }
-
-    const id_unit = data[0].id
-
-    if(id_unit){
-      const { error } = await supabase
-      .from('courses')
-      .insert({  
-        name: e.name,
-        organizer: e.organizer,
-        price: e.price,
-        day: parseInt(e.day),
-        month: e.month,
-        year: year,
-        schedule: parseInt(e.schedule),
-        id_units: id_unit})
-  
-      if(error){
-        throw error
-      }
-      handleGetFilteredCourseList(months[month], year)
-      setShowModal(false)
-      allInputs.forEach((input) => {
-        input.value = ""
-      })
-    }
+    getFilteredCourseList(idParamsUnity, months[month], year)
+    setShowModal(false)
+    allInputs.forEach((input) => {
+      input.value = ""
+    })
   }
   
   return(
