@@ -69,12 +69,15 @@ export function ListCourses({toggleAside, setToggleAside}){
           : ""}
 
           {course.id === idSelectedCard ? 
+          <>
             <div id={course.id} className={`modalCard ${showOptionCard ? "showOptionCard" : ""}`}>
               <p className="btnModal">Editar informação</p>
               <p className={`btnModal ${course.is_cancelled ? "disableBtn" : ""}`} onClick={handleCancelCourse}>Cancelar curso</p>
               <p className="btnModal" style={{"color": "red"}}
               onClick={handleDeleteCourse}>Excluir curso</p>
-            </div> 
+            </div>
+            <div style={{position: "fixed", inset: 0, background: "transparent", zIndex: 4, display: showOptionCard ? "block" : "none"}} onClick={() => {setShowOptionCard(false)}} ></div>
+          </> 
           : ""}
         </Card>
       )
