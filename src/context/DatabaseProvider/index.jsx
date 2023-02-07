@@ -1,6 +1,5 @@
 import { createContext, useState } from "react"
 import { supabase } from "../../service/supabase"
-import { getUserLocalStorage } from "../AuthProvider/util";
 
 export const DatabaseContext = createContext({})
 
@@ -11,6 +10,7 @@ export function DatabaseContextProvider({children}){
   const [ currentCourse, setCurrentCourse ] = useState()
   const [ listStudentsDB, setListStudentsDB ] = useState([])
   const [ isLoading, setIsLoading] = useState(true)
+  const [ isLoadingList, setIsLoadingList] = useState(true)
 
   const initializeCurrentStudent = {
     isStudent: false,
@@ -41,6 +41,7 @@ export function DatabaseContextProvider({children}){
   
 
   async function getFilteredCourseList(idParams, month, year){
+    setIsLoadingList(true)
     const {data, error} = await supabase
     .from('courses')
     .select('*')
@@ -53,6 +54,7 @@ export function DatabaseContextProvider({children}){
     }
 
     console.log(data);
+    setIsLoadingList(false)
     return setCourseList(data)
   }
 
@@ -101,7 +103,6 @@ export function DatabaseContextProvider({children}){
       return student;
     })
 
-    // console.log(newState)
     setListStudentsDB(newState)
   }
 
@@ -170,7 +171,7 @@ export function DatabaseContextProvider({children}){
     getCurrentStudent, currentStudent,
     handleGetName, getName, nameUser,
     telephoneUnit,
-    isLoading
+    isLoading, isLoadingList
     }}>
       {children}
     </DatabaseContext.Provider>

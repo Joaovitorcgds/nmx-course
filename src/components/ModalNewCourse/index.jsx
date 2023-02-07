@@ -43,8 +43,8 @@ export function ModalNewCourse({setShowModal, showModal, month, year}){
     if(error){
       throw error
     }
-    getFilteredCourseList(idParamsUnity, months[month], year)
     setShowModal(false)
+    await getFilteredCourseList(idParamsUnity, months[month], year)
     allInputs.forEach((input) => {
       input.value = ""
     })
