@@ -55,7 +55,7 @@ export function Courses() {
                 </ul>
 
                 <h3>Entre em contato para reservar sua vaga neste curso</h3>
-                <a href={`https://api.whatsapp.com/send?phone=${telephoneUnit}`}>
+                <a href={`https://api.whatsapp.com/send?phone=${telephoneUnit}&text=Ol%C3%A1,%20quero%20participar%20do%20curso%20de%20${currentCourse.name}%20com%20o(a)%20culinarista%20${currentCourse.organizer}%20no%20dia%20${currentCourse.day}%20de%20${currentCourse.month}`}>
                   <button >
                     <WhatsappLogo id="imgContact" size={30} weight="bold"/>
                     Entre em contato
