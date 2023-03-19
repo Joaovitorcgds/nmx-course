@@ -8,7 +8,7 @@ import { getUserLocalStorage } from "../../../context/AuthProvider/util";
 
 
 export function Header(){
-  const { nameUser, isLoading, setCurrentCourse } = useDatabase();
+  const { nameUser, isLoading, setCurrentCourse, courseList } = useDatabase();
   const [ sidebarLogout, setSidebarLogout] = useState(false);
   const navigate = useNavigate();
   const user = getUserLocalStorage();
@@ -23,6 +23,14 @@ export function Header(){
   function handleChangeUnit(){
     setCurrentCourse(null)
     navigate("/redirectUnit")
+  }
+
+  function handleRedirectToCourseMonth(){
+    if(courseList.length === 0){
+     return window.alert("Não há cursos disponiveis para baixar a planilha de cursos")
+    }
+
+    navigate(`/${idParamsUnity}/adm/report`)
   }
   
   function signOut(){
@@ -42,7 +50,7 @@ export function Header(){
       <>
         <div className={`sidebarLogout ${sidebarLogout ? "showSidebarLogout" : ""}`} >
           <p className="btnSidebarLogout" onClick={handleChangeUnit}>Trocar de unidade</p>
-          <p className="btnSidebarLogout" onClick={() => navigate(`/${idParamsUnity}/adm/report`)}>Cursos do mês</p>
+          <p className="btnSidebarLogout" onClick={handleRedirectToCourseMonth}>Cursos do mês</p>
           <p className="btnSidebarLogout" style={{"color": "red"}} onClick={signOut}>Sair</p>
         </div>
         <div style={{position: "fixed", inset: 0, background: "transparent", zIndex: 4, display: sidebarLogout ? "block" : "none"}} onClick={() => {setSidebarLogout(false)}} ></div>
