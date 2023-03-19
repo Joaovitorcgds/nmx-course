@@ -11,6 +11,7 @@ import RedirectUnity from "../pages/RedirectUnity"
 
 import { ProtectedLayout } from '../pages/ProtectedLayout'
 import { Courses } from "../pages/Courses"
+import { CoursesMonth } from "../report/CoursesMonth"
 
 export function Routes (){
   const router = createBrowserRouter([
@@ -42,6 +43,13 @@ export function Routes (){
     {
       path: `/:idParams/courses`,
       element: <Courses/>
+    },
+    {
+      path: "/:idParamsUnity/adm/report",
+      element: 
+      <ProtectedLayout> 
+        <CoursesMonth/>
+      </ProtectedLayout>,
     }
   ]);
 

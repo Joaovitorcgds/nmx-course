@@ -3,7 +3,7 @@ import logoNmx from "../../../assets/logo.png"
 import { UserCircle } from "phosphor-react"
 import { useDatabase } from "../../../context/DatabaseProvider/useDatabase"
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getUserLocalStorage } from "../../../context/AuthProvider/util";
 
 
@@ -12,6 +12,7 @@ export function Header(){
   const [ sidebarLogout, setSidebarLogout] = useState(false);
   const navigate = useNavigate();
   const user = getUserLocalStorage();
+  const {idParamsUnity} = useParams();
 
   function showSidebarLogout(){
     if(user){
@@ -41,6 +42,7 @@ export function Header(){
       <>
         <div className={`sidebarLogout ${sidebarLogout ? "showSidebarLogout" : ""}`} >
           <p className="btnSidebarLogout" onClick={handleChangeUnit}>Trocar de unidade</p>
+          <p className="btnSidebarLogout" onClick={() => navigate(`/${idParamsUnity}/adm/report`)}>Cursos do mês</p>
           <p className="btnSidebarLogout" style={{"color": "red"}} onClick={signOut}>Sair</p>
         </div>
         <div style={{position: "fixed", inset: 0, background: "transparent", zIndex: 4, display: sidebarLogout ? "block" : "none"}} onClick={() => {setSidebarLogout(false)}} ></div>
