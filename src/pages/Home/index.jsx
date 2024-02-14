@@ -39,9 +39,9 @@ export default function Home(){
           
           <div className="separator">Selecione a unidade de sua preferência</div>
 
-          <button id="1" className='btnUnity' onClick={handleNavigate}>Unidade Novamix Campinho</button>
-          <button id="2" className='btnUnity' onClick={handleNavigate}>Unidade Novamix Teresópolis</button>
-          <button id="3" className='btnUnity' onClick={handleNavigate}>Unidade Novamix Prado</button>
+          <button id="1" className='btnUnity' onClick={handleNavigate}>Sala de Aula 1</button>
+          <button id="2" className='btnUnity' onClick={handleNavigate}>Sala de Aula 2</button>
+          <button id="3" className='btnUnity' onClick={handleNavigate}>Sala de Aula 3</button>
         </div>
       </main>
     </div>

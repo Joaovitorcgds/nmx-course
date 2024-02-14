@@ -22,7 +22,7 @@
 #asideSignIn{
   flex: 6;
 
-  background: #1e8581;
+  background: black;
   color: #FFF;
 
   display: flex;
@@ -125,8 +125,8 @@
         border: none;
         cursor: pointer;
         transition: all ease-in-out .4s;
-        background-color: #ec8423;
-        color: white;
+        background-color: #fdd011;
+        color: black;
         font-weight: 600;
       
         &:hover{

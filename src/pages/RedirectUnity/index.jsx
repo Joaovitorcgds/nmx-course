@@ -16,9 +16,9 @@ export default function RedirectUnity(){
         <div className="contentModalRedirect">
           <h1>Qual unidade você deseja entrar</h1>
           <div className="containerBtn">
-            <button id="1" className='btnUnityRedirectAdm' onClick={handleNavigateAdm}>Unidade Novamix Campinho</button>
-            <button id="2" className='btnUnityRedirectAdm' onClick={handleNavigateAdm}>Unidade Novamix Teresópolis</button>
-            <button id="3" className='btnUnityRedirectAdm' onClick={handleNavigateAdm}>Unidade Novamix Prado</button>
+            <button id="1" className='btnUnityRedirectAdm' onClick={handleNavigateAdm}>Sala de Aula 1</button>
+            <button id="2" className='btnUnityRedirectAdm' onClick={handleNavigateAdm}>Sala de Aula 2</button>
+            <button id="3" className='btnUnityRedirectAdm' onClick={handleNavigateAdm}>Sala de Aula 3</button>
           </div>
         </div>
       </div>
